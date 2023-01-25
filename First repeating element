@@ -1,0 +1,21 @@
+int Solution::solve(vector<int> &A) {
+    map<long long int,long long int> val;
+    map<long,long> dup;
+    for(int i=A.size()-1;i>=0;i--){
+        if(val.find(A[i])==val.end())
+        val.insert(pair<long long int,long long int>(A[i],1));
+        else
+        dup.insert(pair<long long int,long long int>(A[i],i));
+    }
+    if(dup.empty())
+    return -1;
+    long long int min=LONG_MAX;
+    int r;
+    for(auto i:dup){
+        if(i.second<min){
+        min=i.second;
+        r=i.first;
+        }
+    }
+    return r;
+}
